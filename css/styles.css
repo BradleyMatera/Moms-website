@@ -365,3 +365,54 @@ main {
   font-size: 1.5rem;
   margin-bottom: 1rem;
 }
+/* Custom Cursor */
+.custom-cursor {
+  cursor: none;
+}
+
+#custom-cursor {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--primary-color);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.1s ease-out; /* Simplified transition */
+  transform: translate(-50%, -50%);
+}
+
+/* Simplified Hover Animation */
+.hover-lift {
+  transition: transform 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-3px); /* Reduced translate value */
+}
+
+/* Simplified SVG Animation */
+.svg-animate path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw 3s linear forwards; /* Simplified animation */
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Simplified Text Animation */
+.text-animate {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(10px); /* Reduced translate value */
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.text-animate.active {
+  opacity: 1;
+  transform: translateY(0);
+}

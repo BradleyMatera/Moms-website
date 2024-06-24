@@ -72,3 +72,23 @@ export function initMicroInteractions() {
         }, 4000);
     });
 }
+// Utility function to throttle events
+const throttle = (func, limit) => {
+    let inThrottle;
+    return (...args) => {
+        if (!inThrottle) {
+            func(...args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    };
+};
+
+// Custom Cursor Initialization
+export const initCustomCursor = () => {
+    const cursor = document.getElementById('custom-cursor');
+    document.addEventListener('mousemove', throttle((e) => {
+        cursor.style.left = `${e.clientX}px`;
+        cursor.style.top = `${e.clientY}px`;
+    }, 16)); // Throttle to approximately 60fps
+};
