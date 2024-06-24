@@ -21,15 +21,6 @@ import {
 } from './animations.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize animations and effects
-    initCustomCursor();
-    initParallax();
-    initTextAnimations();
-    init3DCards();
-    initSvgAnimations();
-    initMicroInteractions();
-    initializeAOS();
-
     // Create main structure
     const content = document.getElementById('content');
     content.appendChild(createHeader());
@@ -70,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(error => console.error('Error loading content:', error));
 });
 
-function initScrollAnimations() {
+const initScrollAnimations = () => {
     gsap.utils.toArray('.parallax-section').forEach(section => {
         gsap.to(section, {
             backgroundPosition: `50% ${innerHeight / 2}px`,
@@ -97,4 +88,4 @@ function initScrollAnimations() {
             }
         });
     });
-}
+};
