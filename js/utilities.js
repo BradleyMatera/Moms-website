@@ -163,16 +163,22 @@ export const displayRoutines = () => {
 };
 
 
+
 export const fetchVideos = () => {
     const videosContainer = document.getElementById('videosContainer');
     return fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=6&q=fitness%20workout&type=video&key=${API_KEYS.GOOGLE_CLOUD_API_KEY}`)
         .then(response => {
             if (!response.ok) {
-                throw new Error('Network response was not ok');
+                return response.json().then(errorData => {
+                    const error = new Error('Network response was not ok');
+                    error.data = errorData;
+                    throw error;
+                });
             }
             return response.json();
         })
         .then(data => {
+            videosContainer.innerHTML = ''; // Clear existing videos
             if (data.items) {
                 data.items.forEach(video => {
                     const videoElement = document.createElement('div');
@@ -187,8 +193,17 @@ export const fetchVideos = () => {
                 });
             }
         })
-        .catch(error => console.error('Error fetching videos:', error));
+        .catch(error => {
+            if (error.data && error.data.error && error.data.error.errors.some(e => e.reason === 'quotaExceeded')) {
+                console.error('YouTube API quota exceeded:', error.data.error.message);
+                videosContainer.innerHTML = '<p>Quota exceeded. Please try again later.</p>';
+            } else {
+                console.error('Error fetching videos:', error);
+                videosContainer.innerHTML = '<p>Failed to load videos. Please try again later.</p>';
+            }
+        });
 };
+
 
 
 
