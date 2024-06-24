@@ -8,7 +8,6 @@ import {
     fetchGifs,
     displayNutritionTips,
     toggleSectionVisibility,
-    initializeAOS,
     setupGoogleAuth
 } from './utilities.js';
 import { initializeSlideshow } from './slideshow.js';
@@ -154,5 +153,3 @@ pulseElements.forEach(el => {
         setTimeout(() => el.classList.remove('animate-pulse'), 2000);
     }, 4000);
 });
-
-// Initialize AOS

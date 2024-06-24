@@ -56,6 +56,7 @@ const updateSigninStatus = (isSignedIn) => {
         document.getElementById('profile-info').style.display = 'none';
     }
 };
+
 export const createHeader = () => {
     const header = document.createElement('header');
     header.className = 'py-4 px-6 text-white glass fixed w-full z-50';
@@ -218,8 +219,6 @@ export const displayRoutines = () => {
     });
 };
 
-
-
 export const fetchVideos = () => {
     const videosContainer = document.getElementById('videosContainer');
     return fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=6&q=fitness%20workout&type=video&key=${API_KEYS.GOOGLE_CLOUD_API_KEY}`)
@@ -259,9 +258,6 @@ export const fetchVideos = () => {
             }
         });
 };
-
-
-
 
 export const fetchGifs = () => {
     const gifsContainer = document.getElementById('gifsContainer');
