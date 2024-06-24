@@ -117,7 +117,7 @@ main {
   position: fixed;
   pointer-events: none;
   z-index: 9999;
-  transition: all 0.2s ease-out;
+  transition: transform 0.2s ease-out;
   transform: translate(-50%, -50%);
 }
 
@@ -168,6 +168,7 @@ main {
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
+
 /* Improved 3D Card Flip Styling */
 .card-3d {
   text-align: center;
@@ -230,7 +231,6 @@ main {
   font-size: 1rem; /* Adjust font size for description */
   line-height: 1.4;
 }
-
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
@@ -307,7 +307,7 @@ main {
 }
 
 .hover-lift:hover {
-  transform: translateY(-5px);
+  transform: translateY(-3px); /* Reduced translate value */
 }
 
 .pulse {
@@ -318,7 +318,7 @@ main {
 .svg-animate path {
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
-  animation: draw 5s linear forwards;
+  animation: draw 3s linear forwards; /* Simplified animation */
 }
 
 /* Hero Section */
@@ -347,9 +347,6 @@ main {
   -moz-backdrop-filter: blur(10px); /* Fallback for Firefox */
 }
 
-/* Hero Section */
-
-
 .hero-section h1, .hero-section p {
   z-index: 1; /* Ensure text is above the overlay */
   color: #fff;
@@ -365,54 +362,74 @@ main {
   font-size: 1.5rem;
   margin-bottom: 1rem;
 }
-/* Custom Cursor */
-.custom-cursor {
-  cursor: none;
-}
 
-#custom-cursor {
-  width: 20px;
-  height: 20px;
-  border: 2px solid var(--primary-color);
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: 9999;
-  transition: transform 0.1s ease-out; /* Simplified transition */
-  transform: translate(-50%, -50%);
-}
+/* Responsive Styles */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
 
-/* Simplified Hover Animation */
-.hover-lift {
-  transition: transform 0.3s ease;
-}
+  .hero-section h1 {
+    font-size: 2rem;
+  }
 
-.hover-lift:hover {
-  transform: translateY(-3px); /* Reduced translate value */
-}
+  .hero-section p {
+    font-size: 1rem;
+  }
 
-/* Simplified SVG Animation */
-.svg-animate path {
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
-  animation: draw 3s linear forwards; /* Simplified animation */
-}
+  .card-3d {
+    max-width: 90%;
+    margin: 10px auto;
+  }
 
-@keyframes draw {
-  to {
-    stroke-dashoffset: 0;
+  .card-3d-front i {
+    font-size: 2rem;
+  }
+
+  .card-3d-front h3 {
+    font-size: 1.25rem;
+  }
+
+  .card-3d-back p {
+    font-size: 0.875rem;
+  }
+
+  main {
+    padding: 10px;
   }
 }
 
-/* Simplified Text Animation */
-.text-animate {
-  display: inline-block;
-  opacity: 0;
-  transform: translateY(10px); /* Reduced translate value */
-  transition: opacity 0.5s, transform 0.5s;
-}
+@media (max-width: 480px) {
+  .hero-section {
+    height: 20vh;
+  }
 
-.text-animate.active {
-  opacity: 1;
-  transform: translateY(0);
+  .hero-section h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero-section p {
+    font-size: 0.875rem;
+  }
+
+  .card-3d {
+    max-width: 100%;
+    margin: 5px auto;
+  }
+
+  .card-3d-front i {
+    font-size: 1.5rem;
+  }
+
+  .card-3d-front h3 {
+    font-size: 1rem;
+  }
+
+  .card-3d-back p {
+    font-size: 0.75rem;
+  }
+
+  main {
+    padding: 5px;
+  }
 }
