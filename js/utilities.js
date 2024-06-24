@@ -143,23 +143,27 @@ export const displayRoutines = () => {
         { title: 'Flexibility & Balance', description: 'Improve your flexibility and balance with this gentle yet effective routine.', icon: 'fa-solid fa-person-skating' },
         { title: 'Core Crusher', description: 'Strengthen your core with this targeted ab workout for a stronger, more stable you.', icon: 'fa-solid fa-apple-whole' }
     ];
+
     routines.forEach(routine => {
         const routineElement = document.createElement('div');
-        routineElement.classList.add('routine', 'card-3d', 'bg-white', 'p-6', 'rounded-lg', 'shadow-lg', 'hover:shadow-xl', 'transition', 'duration-300');
+        routineElement.className = 'routine card-3d bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition duration-300';
         routineElement.innerHTML = `
             <div class="card-3d-inner">
-                <div class="card-3d-front">
-                    <i class="${routine.icon} text-5xl text-green-500 mb-4"></i>
-                    <h3 class="text-2xl font-bold mb-2">${routine.title}</h3>
+                <div class="card-3d-front flex flex-col items-center justify-center p-4">
+                    <i class="${routine.icon} text-4xl text-green-500 mb-2"></i>
+                    <h3 class="text-xl font-bold mb-2">${routine.title}</h3>
                 </div>
-                <div class="card-3d-back">
-                    <p class="text-lg">${routine.description}</p>
+                <div class="card-3d-back flex items-center justify-center p-4">
+                    <p class="text-sm">${routine.description}</p>
                 </div>
             </div>
         `;
         routinesContainer.appendChild(routineElement);
     });
 };
+
+
+
 
 export const fetchVideos = () => {
     const videosContainer = document.getElementById('videosContainer');
