@@ -32,10 +32,10 @@
 /* General Styles */
 body {
   font-family: 'Poppins', sans-serif;
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.6;
   overflow-x: hidden;
-  padding-top: 60px;
+  padding-top: 3.75rem;
   background-color: var(--bg-color);
   color: var(--text-color);
   margin: 0;
@@ -86,21 +86,21 @@ header {
   width: 100%;
   background-color: var(--bg-color);
   z-index: 100;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease;
 }
 
 header.scrolled {
   background-color: var(--primary-color);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
 }
 
 main {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
   margin: 0 auto;
-  max-width: 1200px;
-  padding: 20px;
+  max-width: 75rem;
+  padding: 1.25rem;
   transition: color 0.3s ease;
 }
 
@@ -110,15 +110,50 @@ main {
 }
 
 #custom-cursor {
-  width: 20px;
-  height: 20px;
-  border: 2px solid var(--primary-color);
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 0.125rem solid var(--primary-color);
   border-radius: 50%;
   position: fixed;
   pointer-events: none;
   z-index: 9999;
-  transition: transform 0.2s ease-out;
+  transition: transform 0.1s ease-out;
   transform: translate(-50%, -50%);
+}
+
+/* Simplified Hover Animation */
+.hover-lift {
+  transition: transform 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-0.1875rem);
+}
+
+/* Simplified SVG Animation */
+.svg-animate path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw 3s linear forwards;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Simplified Text Animation */
+.text-animate {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.625rem);
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.text-animate.active {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Animated Background */
@@ -148,39 +183,26 @@ main {
   text-align: center;
 }
 
-/* Text Animation */
-.text-animate {
-  display: inline-block;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 1s ease, transform 1s ease;
-}
-
-.text-animate.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 /* Glassmorphism */
 .glass {
   background: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 0.5rem 2rem 0 rgba(31, 38, 135, 0.37);
+  border-radius: 0.625rem;
+  border: 0.0625rem solid rgba(255, 255, 255, 0.18);
 }
 
 /* Improved 3D Card Flip Styling */
 .card-3d {
   text-align: center;
   perspective: 1000px;
-  max-height: 500px;
+  max-height: 31.25rem;
   height: 100%;
   width: 100%;
-  max-width: 350px; /* Set a maximum width */
-  margin: 20px auto; /* Center the card with margin */
-  background-color: white; /* Set background color */
-  border-radius: 10px; /* Rounded corners */
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); /* Box shadow for depth */
+  max-width: 21.875rem;
+  margin: 1.25rem auto;
+  background-color: white;
+  border-radius: 0.625rem;
+  box-shadow: 0 0.5rem 2rem 0 rgba(31, 38, 135, 0.37);
 }
 
 .card-3d-inner {
@@ -190,7 +212,7 @@ main {
   text-align: center;
   transition: transform 0.6s ease;
   transform-style: preserve-3d;
-  padding: 20px; /* Ensure enough padding */
+  padding: 1.25rem;
   box-sizing: border-box;
 }
 
@@ -208,17 +230,17 @@ main {
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  padding: 20px;
-  border-radius: 10px; /* Ensure the corners are rounded */
+  padding: 1.25rem;
+  border-radius: 0.625rem;
 }
 
 .card-3d-front i {
-  font-size: 2.5rem; /* Adjust font size for icon */
+  font-size: 2.5rem;
   margin-bottom: 1rem;
 }
 
 .card-3d-front h3 {
-  font-size: 1.5rem; /* Adjust font size for heading */
+  font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
 }
@@ -228,13 +250,13 @@ main {
 }
 
 .card-3d-back p {
-  font-size: 1rem; /* Adjust font size for description */
+  font-size: 1rem;
   line-height: 1.4;
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 0.625rem;
 }
 
 ::-webkit-scrollbar-track {
@@ -243,7 +265,7 @@ main {
 
 ::-webkit-scrollbar-thumb {
   background: var(--primary-color);
-  border-radius: 5px;
+  border-radius: 0.3125rem;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -285,40 +307,25 @@ main {
 /* Responsive Grid Layout */
 .advanced-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(15.625rem, 1fr));
   gap: 1rem;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 48rem) {
   .advanced-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 64rem) {
   .advanced-grid {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
 /* Micro-interactions */
-.hover-lift {
-  transition: transform 0.3s ease;
-}
-
-.hover-lift:hover {
-  transform: translateY(-3px); /* Reduced translate value */
-}
-
 .pulse {
   animation: pulse 4s infinite;
-}
-
-/* SVG Animation */
-.svg-animate path {
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
-  animation: draw 3s linear forwards; /* Simplified animation */
 }
 
 /* Hero Section */
@@ -344,11 +351,11 @@ main {
   background: rgba(0, 0, 0, 0.5);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  -moz-backdrop-filter: blur(10px); /* Fallback for Firefox */
+  -moz-backdrop-filter: blur(10px);
 }
 
 .hero-section h1, .hero-section p {
-  z-index: 1; /* Ensure text is above the overlay */
+  z-index: 1;
   color: #fff;
 }
 
@@ -363,10 +370,10 @@ main {
   margin-bottom: 1rem;
 }
 
-/* Responsive Styles */
-@media (max-width: 768px) {
-  body {
-    font-size: 14px;
+/* Media Queries for Responsiveness */
+@media (max-width: 48rem) {
+  .card-3d {
+    max-width: 18.75rem;
   }
 
   .hero-section h1 {
@@ -374,34 +381,26 @@ main {
   }
 
   .hero-section p {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 
-  .card-3d {
-    max-width: 90%;
-    margin: 10px auto;
+  #custom-cursor {
+    width: 0.9375rem;
+    height: 0.9375rem;
   }
 
-  .card-3d-front i {
-    font-size: 2rem;
+  .text-animate {
+    transform: translateY(0.9375rem);
   }
 
-  .card-3d-front h3 {
-    font-size: 1.25rem;
-  }
-
-  .card-3d-back p {
-    font-size: 0.875rem;
-  }
-
-  main {
-    padding: 10px;
+  .parallax-section {
+    height: 50vh;
   }
 }
 
-@media (max-width: 480px) {
-  .hero-section {
-    height: 20vh;
+@media (max-width: 30rem) {
+  .card-3d {
+    max-width: 15.625rem;
   }
 
   .hero-section h1 {
@@ -409,27 +408,19 @@ main {
   }
 
   .hero-section p {
-    font-size: 0.875rem;
-  }
-
-  .card-3d {
-    max-width: 100%;
-    margin: 5px auto;
-  }
-
-  .card-3d-front i {
-    font-size: 1.5rem;
-  }
-
-  .card-3d-front h3 {
     font-size: 1rem;
   }
 
-  .card-3d-back p {
-    font-size: 0.75rem;
+  #custom-cursor {
+    width: 0.625rem;
+    height: 0.625rem;
   }
 
-  main {
-    padding: 5px;
+  .text-animate {
+    transform: translateY(0.625rem);
+  }
+
+  .parallax-section {
+    height: 40vh;
   }
 }
