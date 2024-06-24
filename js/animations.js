@@ -1,4 +1,6 @@
 // animations.js
+
+// Throttle function to limit the frequency of event handler execution
 const throttle = (func, limit) => {
     let inThrottle;
     return (...args) => {
@@ -10,6 +12,7 @@ const throttle = (func, limit) => {
     };
 };
 
+// Initialize custom cursor
 export const initCustomCursor = () => {
     const cursor = document.getElementById('custom-cursor');
     document.addEventListener('mousemove', throttle((e) => {
@@ -18,7 +21,7 @@ export const initCustomCursor = () => {
     }, 16)); // Throttle to approximately 60fps
 };
 
-// Other animation functions...
+// Initialize parallax effect
 export const initParallax = () => {
     const parallaxSections = document.querySelectorAll('.parallax-section');
     parallaxSections.forEach(section => {
@@ -29,6 +32,7 @@ export const initParallax = () => {
     });
 };
 
+// Initialize text animations
 export const initTextAnimations = () => {
     const textElements = document.querySelectorAll('.text-animate');
     const observer = new IntersectionObserver((entries) => {
@@ -42,6 +46,7 @@ export const initTextAnimations = () => {
     textElements.forEach(el => observer.observe(el));
 };
 
+// Initialize 3D card animations
 export const init3DCards = () => {
     const cards = document.querySelectorAll('.card-3d');
     cards.forEach(card => {
@@ -54,6 +59,7 @@ export const init3DCards = () => {
     });
 };
 
+// Initialize SVG animations
 export const initSvgAnimations = () => {
     const svgs = document.querySelectorAll('.svg-animate');
     svgs.forEach(svg => {
@@ -66,6 +72,7 @@ export const initSvgAnimations = () => {
     });
 };
 
+// Initialize micro-interactions
 export const initMicroInteractions = () => {
     const hoverElements = document.querySelectorAll('.hover-lift');
     hoverElements.forEach(el => {
@@ -86,10 +93,12 @@ export const initMicroInteractions = () => {
     });
 };
 
-// Initialize the event handlers immediately
-initCustomCursor();
-initParallax();
-initTextAnimations();
-init3DCards();
-initSvgAnimations();
-initMicroInteractions();
+// Ensure the event handlers are initialized only once
+document.addEventListener('DOMContentLoaded', () => {
+    initCustomCursor();
+    initParallax();
+    initTextAnimations();
+    init3DCards();
+    initSvgAnimations();
+    initMicroInteractions();
+});
