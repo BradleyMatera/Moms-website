@@ -163,8 +163,6 @@ export const displayRoutines = () => {
 };
 
 
-
-
 export const fetchVideos = () => {
     const videosContainer = document.getElementById('videosContainer');
     return fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=6&q=fitness%20workout&type=video&key=${API_KEYS.GOOGLE_CLOUD_API_KEY}`)
@@ -191,6 +189,8 @@ export const fetchVideos = () => {
         })
         .catch(error => console.error('Error fetching videos:', error));
 };
+
+
 
 export const fetchGifs = () => {
     const gifsContainer = document.getElementById('gifsContainer');

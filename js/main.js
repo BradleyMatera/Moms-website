@@ -47,6 +47,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             });
 
+            // Add event listener for "Start Your Transformation" button
+            const startButton = document.querySelector('.cta-button[href="#contact"]');
+            if (startButton) {
+                startButton.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+                });
+            }
+
             // Remove loading screen
             const loadingScreen = document.getElementById('loading-screen');
             loadingScreen.classList.add('fade-out');
