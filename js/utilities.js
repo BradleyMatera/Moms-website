@@ -1,5 +1,61 @@
 import { API_KEYS } from './apis.js';
 
+const gapiLoadPromise = new Promise((resolve) => {
+    gapi.load('client:auth2', resolve);
+});
+
+const initClient = () => gapi.client.init({
+    apiKey: API_KEYS.GOOGLE_CLOUD_API_KEY,
+    clientId: 'YOUR_CLIENT_ID.apps.googleusercontent.com', // Replace with your actual Client ID
+    discoveryDocs: ['https://people.googleapis.com/$discovery/rest?version=v1'],
+    scope: 'profile'
+});
+
+const signIn = () => gapi.auth2.getAuthInstance().signIn();
+
+const signOut = () => gapi.auth2.getAuthInstance().signOut();
+
+const fetchProfileInfo = () => gapi.client.people.people.get({
+    resourceName: 'people/me',
+    personFields: 'names,photos'
+});
+
+export const setupGoogleAuth = () => {
+    return gapiLoadPromise
+        .then(initClient)
+        .then(() => {
+            const authInstance = gapi.auth2.getAuthInstance();
+            authInstance.isSignedIn.listen(updateSigninStatus);
+            updateSigninStatus(authInstance.isSignedIn.get());
+
+            document.getElementById('signin-button').addEventListener('click', () => {
+                signIn().then(() => updateSigninStatus(authInstance.isSignedIn.get()));
+            });
+
+            document.getElementById('signout-button').addEventListener('click', () => {
+                signOut().then(() => updateSigninStatus(authInstance.isSignedIn.get()));
+            });
+        });
+};
+
+const updateSigninStatus = (isSignedIn) => {
+    if (isSignedIn) {
+        document.getElementById('signin-button').style.display = 'none';
+        document.getElementById('signout-button').style.display = 'block';
+        fetchProfileInfo().then(response => {
+            const profile = response.result;
+            document.getElementById('profile-info').innerHTML = `
+                <h2>Welcome, ${profile.names[0].displayName}</h2>
+                <img src="${profile.photos[0].url}" alt="Profile Photo">
+            `;
+            document.getElementById('profile-info').style.display = 'block';
+        });
+    } else {
+        document.getElementById('signin-button').style.display = 'block';
+        document.getElementById('signout-button').style.display = 'none';
+        document.getElementById('profile-info').style.display = 'none';
+    }
+};
 export const createHeader = () => {
     const header = document.createElement('header');
     header.className = 'py-4 px-6 text-white glass fixed w-full z-50';
@@ -269,5 +325,34 @@ export const initializeAOS = () => {
         duration: 1000,
         once: true,
         mirror: true,
+    });
+};
+
+export const initScrollAnimations = () => {
+    gsap.utils.toArray('.parallax-section').forEach(section => {
+        gsap.to(section, {
+            backgroundPosition: `50% ${innerHeight / 2}px`,
+            ease: "none",
+            scrollTrigger: {
+                trigger: section,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true
+            }
+        });
+    });
+
+    gsap.utils.toArray('.fade-in').forEach(elem => {
+        gsap.from(elem, {
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            scrollTrigger: {
+                trigger: elem,
+                start: "top 80%",
+                end: "bottom 20%",
+                toggleActions: "play none none reverse"
+            }
+        });
     });
 };
