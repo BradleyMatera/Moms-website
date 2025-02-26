@@ -10,24 +10,57 @@
 
 /* Animations */
 @keyframes scaleAnimation {
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
+  50% {
+    transform: scale(1.05);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
 @keyframes gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 @keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
 @keyframes draw {
-  to { stroke-dashoffset: 0; }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 /* General Styles */
@@ -43,7 +76,12 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0;
   padding: 0;
   font-weight: 600;
@@ -83,14 +121,14 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: var(--bg-color);
+  background-color: transparent;
   z-index: 100;
-  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease;
 }
 
 header.scrolled {
   background-color: var(--primary-color);
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
 }
 
 main {
@@ -177,6 +215,7 @@ main {
 .glass {
   background: rgba(255, 255, 255, 0.25);
   box-shadow: 0 0.5rem 2rem 0 rgba(31, 38, 135, 0.37);
+  -webkit-backdrop-filter: blur(0.25rem);
   backdrop-filter: blur(0.25rem);
   border-radius: 0.625rem;
   border: 0.0625rem solid rgba(255, 255, 255, 0.18);
@@ -185,9 +224,9 @@ main {
 /* 3D Card Flip */
 .card-3d {
   perspective: 1000px;
-  height: 31.25rem;
-  width: 21.875rem;
-  margin: 1.25rem auto;
+  height: 20rem;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .card-3d-inner {
@@ -203,7 +242,8 @@ main {
   transform: rotateY(180deg);
 }
 
-.card-3d-front, .card-3d-back {
+.card-3d-front,
+.card-3d-back {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -215,7 +255,7 @@ main {
   padding: 1.25rem;
   border-radius: 0.625rem;
   background-color: white;
-  box-shadow: 0 0.5rem 2rem 0 rgba(31, 38, 135, 0.37);
+  box-shadow: 0 0.5rem 2rem 0 rgba(31, 38, 135, 0.1);
 }
 
 .card-3d-back {
@@ -293,9 +333,13 @@ main {
   animation: pulse 4s infinite;
 }
 
+.pulse-once {
+  animation: pulse 0.5s;
+}
+
 /* Hero Section */
 .hero-section {
-  height: 50vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -314,10 +358,12 @@ main {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
+  -webkit-backdrop-filter: blur(0.625rem);
   backdrop-filter: blur(0.625rem);
 }
 
-.hero-section h1, .hero-section p {
+.hero-section h1,
+.hero-section p {
   position: relative;
   z-index: 1;
   color: #fff;
@@ -334,29 +380,11 @@ main {
   margin-bottom: 1rem;
 }
 
-/* Footer Styles */
-footer {
-  background-color: var(--bg-color);
-  padding: 2rem 0;
-  text-align: center;
-  color: var(--text-color);
-}
-
-/* Navigation Styles */
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-}
-
-nav ul {
-  display: flex;
-  gap: 1rem;
-}
-
-nav a {
-  font-weight: 600;
+/* Slideshow */
+#slideshow {
+  background-size: cover;
+  background-position: center;
+  transition: background-image 1s ease-in-out;
 }
 
 /* Mobile Navigation */
@@ -394,25 +422,67 @@ nav a {
   cursor: pointer;
 }
 
-/* Hamburger Menu */
-.hamburger {
-  display: none;
-  cursor: pointer;
+/* Gallery Section */
+#photos img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.hamburger span {
+#photos img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+/* Routines Section */
+.routine i {
+  transition: transform 0.3s ease;
+}
+
+.routine:hover i {
+  transform: scale(1.2);
+}
+
+/* Videos Section */
+.video .play-button {
+  opacity: 0.8;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.video:hover .play-button {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Nutrition Tips */
+.tip i {
   display: block;
-  width: 25px;
-  height: 3px;
-  margin: 5px auto;
-  background-color: var(--text-color);
-  transition: all 0.3s ease-in-out;
+  margin: 0 auto 1rem;
+  text-align: center;
+}
+
+/* Contact Form */
+#contact-form input,
+#contact-form textarea {
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#contact-form input:focus,
+#contact-form textarea:focus {
+  background-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 0 0.125rem var(--primary-color);
 }
 
 /* Media Queries */
 @media (max-width: 64rem) {
   .advanced-grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .hero-section h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-section p {
+    font-size: 1.3rem;
   }
 }
 
@@ -422,7 +492,7 @@ nav a {
   }
 
   .card-3d {
-    width: 18.75rem;
+    height: 18rem;
   }
 
   .hero-section h1 {
@@ -434,24 +504,12 @@ nav a {
   }
 
   #custom-cursor {
-    width: 0.9375rem;
-    height: 0.9375rem;
+    display: none;
   }
 
   .parallax-section {
     height: 50vh;
-  }
-
-  nav ul {
-    display: none;
-  }
-
-  .hamburger {
-    display: block;
-  }
-
-  .mobile-nav {
-    display: flex;
+    background-attachment: scroll;
   }
 }
 
@@ -461,7 +519,7 @@ nav a {
   }
 
   .card-3d {
-    width: 15.625rem;
+    height: 16rem;
   }
 
   .hero-section h1 {
@@ -472,12 +530,43 @@ nav a {
     font-size: 1rem;
   }
 
-  #custom-cursor {
-    width: 0.625rem;
-    height: 0.625rem;
-  }
-
   .parallax-section {
     height: 40vh;
   }
+}
+
+/* Animation Classes */
+.animate-fade-in {
+  animation: fadeIn 1s ease forwards;
+}
+
+.animate-slide-up {
+  opacity: 0;
+  transform: translateY(2rem);
+  animation: slideUp 0.8s ease forwards;
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Accessibility Improvements */
+:focus {
+  outline: 0.125rem solid var(--primary-color);
+  outline-offset: 0.125rem;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }

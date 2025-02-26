@@ -17,20 +17,105 @@
     <div id="custom-cursor"></div>
     <div id="slideshow" class="fixed inset-0 z-0"></div>
     <div id="content" class="relative z-10">
-        <header id="main-header" class="fixed top-0 left-0 right-0 z-50"></header>
+        <header id="main-header" class="fixed top-0 left-0 right-0 z-50">
+            <nav class="container mx-auto flex justify-between items-center py-4 px-6">
+                <h1 class="text-2xl font-bold text-white">Roxy's Fitness</h1>
+                <ul class="hidden md:flex space-x-6 text-white">
+                    <li><a href="#overview" class="hover-lift">Overview</a></li>
+                    <li><a href="#routines" class="hover-lift">Routines</a></li>
+                    <li><a href="#videos" class="hover-lift">Videos</a></li>
+                    <li><a href="#motivation" class="hover-lift">Motivation</a></li>
+                    <li><a href="#nutrition" class="hover-lift">Nutrition</a></li>
+                    <li><a href="#contact" class="hover-lift">Contact</a></li>
+                </ul>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-white" title="Open mobile menu">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </nav>
+        </header>
+        
         <main class="pt-16">
             <section id="hero" class="hero-section parallax-section">
-                <h1 class="text-animate">Welcome to Roxy's Fitness</h1>
-                <p class="text-animate">Transform Your Body, Transform Your Life</p>
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-4 text-animate">Welcome to Roxy's Fitness</h1>
+                <p class="text-xl md:text-2xl text-white mb-8 text-animate">Transform Your Body, Transform Your Life</p>
+                <a href="#contact" class="cta-button bg-green-500 text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-green-600 transition duration-300">Start Today</a>
             </section>
-            <div id="signin-button" class="cta-button bg-green-500 text-white font-bold py-3 px-6 rounded-full text-lg hover:bg-green-600 transition duration-300">Sign In with Google</div>
-            <div id="signout-button" class="cta-button bg-red-500 text-white font-bold py-3 px-6 rounded-full text-lg hover:bg-red-600 transition duration-300" style="display:none;">Sign Out</div>
-            <div id="profile-info" style="display:none;"></div>
-            <!-- Other sections will be dynamically added here -->
+            
+            <section id="overview" class="py-20 mb-20">
+                <div class="container mx-auto px-6 text-center">
+                    <h2 class="text-4xl font-bold mb-4 text-animate">Transform Your Life with Roxy's Fitness</h2>
+                    <p class="text-xl mb-8 text-animate">Your journey to a healthier you starts here</p>
+                    <div id="photos" class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4"></div>
+                </div>
+            </section>
+            
+            <section id="routines" class="mb-20">
+                <div class="container mx-auto px-6">
+                    <h2 class="text-3xl font-bold mb-10 text-center text-animate">Our Popular Routines</h2>
+                    <div id="routinesContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+                </div>
+            </section>
+            
+            <section id="videos" class="mb-20">
+                <div class="container mx-auto px-6">
+                    <h2 class="text-3xl font-bold mb-10 text-center text-animate">Workout Videos</h2>
+                    <div id="videosContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+                </div>
+            </section>
+            
+            <section id="motivation" class="mb-20">
+                <div class="container mx-auto px-6">
+                    <h2 class="text-3xl font-bold mb-10 text-center text-animate">Daily Motivation</h2>
+                    <div id="gifsContainer" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
+                </div>
+            </section>
+            
+            <section id="nutrition" class="mb-20">
+                <div class="container mx-auto px-6">
+                    <h2 class="text-3xl font-bold mb-10 text-center text-animate">Nutrition Tips</h2>
+                    <div id="nutritionContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+                </div>
+            </section>
+            
+            <section id="contact" class="mb-20">
+                <div class="container mx-auto px-6">
+                    <h2 class="text-3xl font-bold mb-10 text-center text-animate">Contact Us</h2>
+                    <form class="max-w-lg mx-auto glass p-8 rounded-lg">
+                        <input type="text" placeholder="Name" class="w-full p-3 mb-4 rounded bg-white bg-opacity-20">
+                        <input type="email" placeholder="Email" class="w-full p-3 mb-4 rounded bg-white bg-opacity-20">
+                        <textarea placeholder="Message" class="w-full p-3 mb-4 rounded bg-white bg-opacity-20" rows="4"></textarea>
+                        <button type="submit" class="cta-button w-full bg-green-500 text-white font-bold py-3 px-6 rounded hover:bg-green-600 transition duration-300">Send Message</button>
+                    </form>
+                </div>
+            </section>
         </main>
-        <footer id="main-footer" class="mt-8"></footer>
+        
+        <footer id="main-footer" class="bg-gray-800 text-white py-12">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4">Roxy's Fitness for All</h3>
+                        <p class="text-gray-400">Transforming lives through fitness since 2010</p>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4">Quick Links</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#overview" class="hover-lift text-gray-400 hover:text-white">Home</a></li>
+                            <li><a href="#routines" class="hover-lift text-gray-400 hover:text-white">Routines</a></li>
+                            <li><a href="#videos" class="hover-lift text-gray-400 hover:text-white">Videos</a></li>
+                            <li><a href="#contact" class="hover-lift text-gray-400 hover:text-white">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-8 text-center">
+                    <p>&copy; 2025 Roxy's Fitness for All. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
     </div>
-    <script src="https://apis.google.com/js/api.js"></script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/ScrollTrigger.min.js"></script>
