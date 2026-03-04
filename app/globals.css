@@ -1,0 +1,151 @@
+:root {
+  color-scheme: light;
+  --bg: #fbf9f4;
+  --text: #122321;
+  --muted: #4d5f5c;
+  --surface: #ffffff;
+  --surface-alt: #f1efe7;
+  --accent: #0f766e;
+  --accent-strong: #0a4f4b;
+  --ring: rgba(15, 118, 110, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-geist-sans), Arial, sans-serif;
+  color: var(--text);
+  background: radial-gradient(circle at 10% -20%, #d9f4ea 0%, transparent 45%), var(--bg);
+  line-height: 1.5;
+}
+
+a {
+  color: var(--accent-strong);
+}
+
+.hero {
+  min-height: 72vh;
+  display: grid;
+  align-items: center;
+  padding: 3rem 1.25rem;
+}
+
+.hero-content {
+  max-width: 56rem;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid #dbe7e3;
+  border-radius: 1rem;
+  padding: 2.25rem;
+  box-shadow: 0 10px 24px var(--ring);
+}
+
+.eyebrow {
+  margin: 0;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-strong);
+  font-size: 0.85rem;
+}
+
+h1 {
+  margin: 0.5rem 0 1rem;
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  line-height: 1.1;
+}
+
+.lead {
+  color: var(--muted);
+  max-width: 54ch;
+}
+
+.cta {
+  display: inline-block;
+  margin-top: 1.25rem;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.7rem 1.1rem;
+  border-radius: 0.65rem;
+}
+
+main {
+  padding-bottom: 3rem;
+}
+
+.section {
+  max-width: 70rem;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem;
+}
+
+.section h2 {
+  margin: 0 0 1rem;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+.alt {
+  background: var(--surface-alt);
+  border-top: 1px solid #dfddd2;
+  border-bottom: 1px solid #dfddd2;
+}
+
+.grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.three-up {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid #dde6e1;
+  border-radius: 0.85rem;
+  padding: 1rem;
+}
+
+.card h3 {
+  margin: 0 0 0.45rem;
+}
+
+.plan-name {
+  margin: 0;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.plan-price {
+  margin: 0.15rem 0 0.7rem;
+  font-size: 1.55rem;
+  font-weight: 700;
+}
+
+.quote p {
+  margin-top: 0;
+}
+
+.quote footer {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.contact-copy {
+  max-width: 60ch;
+}
+
+@media (max-width: 640px) {
+  .hero-content {
+    padding: 1.3rem;
+  }
+}
