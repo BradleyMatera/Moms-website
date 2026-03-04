@@ -1,10 +1,21 @@
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 const galleryImages = [
-  "outdoor-workout.jpg",
-  "spin-bike.jpg",
-  "therapy-pool.jpg",
-  "training-session.jpg",
+  "outdoor-workout-scene.png",
+  "spin-bike-session.png",
+  "therapy-pool-training.png",
+  "personal-training-session.png",
+];
+
+const motivationImages = [
+  "fitness-hero-motivation.png",
+  "fitness-header-image.png",
+  "dynamic-fitness-banner.png",
+  "fitness-background-pattern.png",
+  "fitness-icon-set.png",
+  "fitness-button-styles.png",
+  "outdoor-workout-scene.png",
+  "spin-bike-session.png",
 ];
 
 const routines = [
@@ -45,37 +56,37 @@ const videos = [
     title: "30-Minute Full Body HIIT",
     description:
       "Burn calories and build strength with this high-intensity interval training routine.",
-    image: "A_motivational_hero_image_for_a_fitness_website_fe.png",
+    image: "fitness-hero-motivation.png",
   },
   {
     title: "Beginner Yoga Flow",
     description:
       "A gentle introduction to yoga that improves flexibility and reduces stress.",
-    image: "A_high-quality_header_image_for_a_fitness_website_.png",
+    image: "fitness-header-image.png",
   },
   {
     title: "Core Strengthening",
     description:
       "Build a strong core with targeted exercises for abs, back, and obliques.",
-    image: "A_dynamic_banner_image_for_a_fitness_website_showi.png",
+    image: "dynamic-fitness-banner.png",
   },
   {
     title: "Upper Body Workout",
     description:
       "Sculpt and strengthen your upper body with this effective routine.",
-    image: "training-session.jpg",
+    image: "personal-training-session.png",
   },
   {
     title: "Cardio Dance Party",
     description:
       "Have fun while burning calories with this energetic dance workout.",
-    image: "spin-bike.jpg",
+    image: "fitness-icon-set.png",
   },
   {
     title: "Recovery Stretching",
     description:
       "Improve flexibility and reduce muscle soreness with essential stretches.",
-    image: "therapy-pool.jpg",
+    image: "therapy-pool-training.png",
   },
 ];
 
@@ -146,7 +157,7 @@ export default function HomePage() {
         id="hero"
         className="hero legacy-hero"
         style={{
-          backgroundImage: `url(${basePath}/img/A_motivational_hero_image_for_a_fitness_website_fe.png)`,
+          backgroundImage: `url(${basePath}/img/fitness-hero-motivation.png)`,
         }}
       >
         <div className="hero-overlay" />
@@ -167,9 +178,9 @@ export default function HomePage() {
           <h2>Transform Your Life with Roxy&apos;s Fitness</h2>
           <p className="section-lead">Your journey to a healthier you starts here</p>
           <div className="grid four-up">
-            {galleryImages.map((name) => (
+            {galleryImages.map((name, index) => (
               <article className="card media-card" key={name}>
-                <img src={`${basePath}/img/${name}`} alt="Fitness gallery" />
+                <img src={`${basePath}/img/${name}`} alt={`Fitness gallery ${index + 1}`} />
               </article>
             ))}
           </div>
@@ -206,7 +217,7 @@ export default function HomePage() {
             {motivationItems.map((item, idx) => (
               <article className="card motivation" key={item}>
                 <img
-                  src={`${basePath}/img/${galleryImages[idx % galleryImages.length]}`}
+                  src={`${basePath}/img/${motivationImages[idx % motivationImages.length]}`}
                   alt={item}
                 />
                 <p>{item}</p>
