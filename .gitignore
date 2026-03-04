@@ -14,6 +14,7 @@ bower_components/
 dist/
 build/
 out/
+.next/
 
 # Log files
 logs
